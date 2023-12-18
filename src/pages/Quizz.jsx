@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './Quizz.module.css';
 import bgImage from 'src/assets/bg.jpg';
 
 export default function Quizz(props) {
+
+  const [currentIdx, setCurrentIdx] = useState(0);
+
   return (
     <div 
       className={styles.root}
@@ -11,22 +14,58 @@ export default function Quizz(props) {
       }}
     >
       <div className={styles.box}>
-        <div>Title</div>
+        <div>Country Quizz</div>
         <div className={styles.questionNumber}>
-          <div>1</div>
-          <div>2</div>
-          <div>3</div>
-          <div>4</div>
-          <div>5</div>
-          <div>6</div>
-          <div>7</div>
-          <div>8</div>
+          {
+            questions.map((question, i) => {
+              return (
+                <div key={i}>{i + 1}</div>
+              );
+            })
+          }
         </div>
         <div>
-          What's the big deal?
+          {questions[currentIdx].question}
         </div>
-        <div>Options</div>
+        <div className={styles.options}>
+          {
+            questions[currentIdx].options.map((option, i) => {
+              return (
+                <div>
+                  {option}
+                </div>
+              );
+            })
+          }
+        </div>
       </div>
     </div>
   );
 }
+
+const questions = [
+  {
+    question: `What's the big deal?`,
+    options: ['A', 'B', 'C', 'D']
+  },
+  {
+    question: `What's next?`,
+    options: ['A', 'B', 'C', 'D']
+  },
+  {
+    question: `What's the big deal?`,
+    options: ['A', 'B', 'C', 'D']
+  },
+  {
+    question: `What's next?`,
+    options: ['A', 'B', 'C', 'D']
+  },
+  {
+    question: `What's the big deal?`,
+    options: ['A', 'B', 'C', 'D']
+  },
+  {
+    question: `What's next?`,
+    options: ['A', 'B', 'C', 'D']
+  },
+]
