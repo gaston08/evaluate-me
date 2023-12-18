@@ -26,6 +26,10 @@ export default function Quizz(props) {
     setCurrentIdx(prev => prev - 1);
   }
 
+  const changePage = page => {
+    setCurrentIdx(page);
+  }
+
   return (
     <div 
       className={styles.root}
@@ -66,6 +70,7 @@ export default function Quizz(props) {
                 <div 
                   key={i}
                   className={`${i === currentIdx ? styles.currentPage : ''}`}
+                  onClick={() => changePage(i)}
                 >
                   {i + 1}
                 </div>
@@ -73,7 +78,7 @@ export default function Quizz(props) {
             })
           }
         </div>
-        <div>
+        <div className={styles.question}>
           {questions[currentIdx].question}
         </div>
         <div className={styles.options}>
@@ -103,27 +108,50 @@ export default function Quizz(props) {
 
 const questions = [
   {
-    question: `1What's the big deal?`,
-    options: ['A', 'B', 'C', 'D']
+    question: `Determine cuál de los siguientes fragmentos es un argumento. Seleccione una opción y escriba el número en el
+    talón de respuestas.`,
+    options: [
+      `La piel de los reptiles es impermeable, delgada y cubierta de escamas. Y eso les permite vivir en tierra firme.`,
+      `Los lagartos mudan su piel al crecer. Se la comen luego para obtener calcio y otros nutrientes.`,
+      `El yacaré tiene hábitos nocturnos o diurnos. Se sigue que tiene hábitos nocturnos, dado que no tiene hábitos diurnos.`,
+      `Si el Mar Argentino ocupa un tercio del territorio, entonces es la zona ecológica más grande del país.`,
+      `A`
+    ]
   },
   {
-    question: `2What's next?`,
+    question: `What's next?`,
     options: ['E', 'F', 'G', 'H']
   },
   {
-    question: `3What's the big deal?`,
+    question: `What's the big deal?`,
     options: ['A', 'B', 'C', 'D']
   },
   {
-    question: `4What's next?`,
+    question: `What's next?`,
     options: ['E', 'F', 'G', 'H']
   },
   {
-    question: `5What's the big deal?`,
+    question: `What's the big deal?`,
     options: ['A', 'B', 'C', 'D']
   },
   {
-    question: `6What's next?`,
+    question: `What's next?`,
     options: ['E', 'F', 'G', 'H']
+  },
+  {
+    question: `What's the big deal?`,
+    options: ['A', 'B', 'C', 'D']
+  },
+  {
+    question: `What's next?`,
+    options: ['E', 'F', 'G', 'H']
+  },
+  {
+    question: `What's the big deal?`,
+    options: ['A', 'B', 'C', 'D']
+  },
+  {
+    question: `What's next?`,
+    options: ['E', 'F', 'G', 'H','E', 'F', 'G', 'H']
   },
 ]
